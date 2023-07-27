@@ -1,0 +1,7 @@
+{
+  // ..other rules
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
