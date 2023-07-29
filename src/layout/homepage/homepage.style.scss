@@ -7,54 +7,83 @@
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  background: url('../../assets/images/background_image.svg');
+  // background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(112, 44, 200, 1) 0%,
+    rgba(52, 94, 200, 1) 100%
+  );
+
+  // background: url('../../assets/images/background_image.svg');
+
   background-repeat: no-repeat;
   background-position: 0px -17em;
   // background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: 100% 80vh;
 
   @include media_query(tablet) {
-    background-position: 0px -11em;
+  }
+
+  @include media_query(desktop) {
+    background-size: 100% 70vh;
   }
 
   .card {
-    padding: 1.5em 0px 1.5em 1.5em;
+    padding: 1.5em 0.3em 1.5em 1.5em;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
       rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     width: 40vw;
-
     border-radius: 40px;
-    margin-bottom: 1em;
+
+    margin-bottom: 10vh;
     max-height: 75vh;
     width: 90vw;
     background-color: #f6f6f6;
-    @include media_query(phone) {
-      width: 45vw;
+    @include media_query(tablet) {
+      width: 70vw;
       padding: 3em 0.6em 3em 3em;
+    }
+    @include media_query(tablet-wide) {
+      width: 50vw;
+      padding: 3em 0.6em 3em 3em;
+    }
+
+    @include media_query(desktop) {
+      width: 35vw;
+    }
+
+    .heading {
+      color: #545454;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1em;
     }
 
     .list_container {
       width: 100%;
-      height: 65vh;
+      height: 60vh;
       overflow-y: auto;
 
       .user_card {
         margin-right: 2.4em;
-        height: 60px;
+        height: 80px;
         max-width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 0.5em;
+        gap: 0.8em;
         border-bottom: 1px solid #d5d5d5;
 
         .profile_picture {
-          height: 35px;
-          width: 35px;
+          height: 45px;
+          width: 45px;
           border-radius: 50%;
         }
         text-decoration: none;
         .user_name {
+          color: #4a4a4a;
+          font-weight: 500;
+          font-size: 1.2rem;
         }
       }
     }
