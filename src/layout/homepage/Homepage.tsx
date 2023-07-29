@@ -4,51 +4,20 @@ import { Link, useParams } from 'react-router-dom';
 import { ApiStatus, ERROR, IDLE, SUCCESS } from '@/api/constants/apiStatus';
 import withAsync from '@/helpers/withAsync';
 import { fetchUser } from '@/api/userApi';
-
-const useFetchUser = () => {
-  const [users, setUsers] = useState<any>();
-  const [fetchUserStatus, setFetchUserStatus] = useState<ApiStatus>(IDLE);
-
-  const initFetchUsers = async () => {
-    const { response, error } = await withAsync(() => fetchUser());
-
-    if (error) {
-      setFetchUserStatus(ERROR);
-    } else if (response) {
-      const { users } = response.data;
-      setUsers(users);
-      setFetchUserStatus(SUCCESS);
-    }
-  };
-
-  return {
-    users,
-    fetchUserStatus,
-    initFetchUsers,
-  };
-};
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState_Iterface } from '@/types/RootState';
+import { userActions } from '@/store/user';
+import slugify from 'slugify';
+import { UserInterface } from '@/types/User';
+import useFetchUser from '@/hooks/useFetchUser';
 
 const Homepage = () => {
   const { users, fetchUserStatus, initFetchUsers } = useFetchUser();
+  const dispatch = useDispatch();
 
-  console.log(users, fetchUserStatus);
   useEffect(() => {
     initFetchUsers();
   }, []);
-
-  interface userProps {
-    userId: number;
-    userName: string;
-    profilePicture: string;
-  }
-  const UserCard = ({ userId, userName, profilePicture }: userProps) => {
-    return (
-      <Link to={`/profile/${userName}`} className='user_card'>
-        <img className='profile_picture' src={profilePicture} alt={userName} />
-        <p className='user_name'>{userName}</p>
-      </Link>
-    );
-  };
 
   return (
     <main className='full-viewport-container'>
@@ -57,12 +26,21 @@ const Homepage = () => {
           {users?.map((user: any) => {
             const { id, name, profilepicture } = user;
             return (
-              <UserCard
-                userId={id}
+              <Link
                 key={id}
-                userName={name}
-                profilePicture={profilepicture}
-              />
+                to={`/profile/${name}`}
+                className='user_card'
+                onClick={() => {
+                  dispatch(userActions.setActiveUserDetails(user));
+                }}
+              >
+                <img
+                  className='profile_picture'
+                  src={profilepicture}
+                  alt={name}
+                />
+                <p className='user_name'>{name}</p>
+              </Link>
             );
           })}
         </div>
