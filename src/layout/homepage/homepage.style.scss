@@ -7,18 +7,18 @@
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  // background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(112, 44, 200, 1) 0%,
-    rgba(52, 94, 200, 1) 100%
-  );
+  // // background: rgb(2, 0, 36);
+  // background: linear-gradient(
+  //   90deg,
+  //   rgba(112, 44, 200, 1) 0%,
+  //   rgba(52, 94, 200, 1) 100%
+  // );
 
-  // background: url('../../assets/images/background_image.svg');
+  background: url('../../assets/images/background_image.svg');
 
   background-repeat: no-repeat;
-  background-position: 0px -17em;
-  // background-attachment: fixed;
+  background-position: 0px -5em;
+  background-attachment: fixed;
   background-size: 100% 80vh;
 
   @include media_query(tablet) {
