@@ -1,0 +1,115 @@
+@import '../../styles/index.scss';
+
+.profile_container {
+  display: flex;
+  height: 90vh;
+  width: 90vw;
+  position: relative;
+
+  @include media_query(desktop) {
+    margin: 0em 5em;
+  }
+
+  .side_bar {
+    display: none;
+    width: 70vw;
+    height: 100%;
+    opacity: 1;
+    background: rgb(112, 44, 200);
+    background: linear-gradient(
+      0deg,
+      rgba(112, 44, 200, 1) 0%,
+      rgba(112, 44, 200, 1) 16%,
+      rgba(52, 94, 200, 1) 61%
+    );
+    border-radius: 40px;
+    padding: 2em;
+
+    @include media_query(tablet) {
+      max-width: 20em;
+      margin: 2em 3em;
+      // height: calc(100% - 4em);
+    }
+
+    @include media_query(desktop) {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+
+      max-width: 15em;
+    }
+  }
+
+  .inverted {
+    transform: rotateY(90);
+  }
+
+  // .visible {
+  //   display: flex;
+  //   position: absolute;
+  // }
+  .icon {
+    height: 2rem;
+    width: 2rem;
+
+    @include media_query(desktop) {
+      display: none;
+    }
+  }
+  .tab_link {
+    padding: 0.8em 0em;
+    color: #a6a5a4;
+    font-size: 1.1rem;
+    font-weight: 500;
+    filter: blur(1);
+    width: 100%;
+    position: relative;
+  }
+
+  .border-bottom {
+    border-bottom: 1px solid #9494de;
+  }
+
+  .active {
+    color: #fff;
+    .circle {
+      position: absolute;
+      border-radius: 100%;
+      height: 1.5em;
+      width: 1.5em;
+      right: -1.9em;
+      padding: 0.2em;
+      background-color: #fff;
+      border-top-right-radius: 10px;
+      color: #a6a5a4;
+
+      text-align: center;
+
+      .circle2::before {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        background-color: #fff;
+        border-top-left-radius: 100%;
+        top: -4px;
+        right: 1px;
+      }
+      .circle3::before {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        background-color: #fff;
+        border-bottom-left-radius: 100%;
+        bottom: -4px;
+        right: 1px;
+      }
+    }
+  }
+
+  .tab-container {
+    width: 70vw;
+  }
+}
